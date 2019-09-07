@@ -12,7 +12,7 @@ PROJECT STATUS
 1 - Pull the head out of my ass and start doing shit - DONE!
 2 - Decide what I actually want to do - DONE
 3 - Plan data and program structure - IN PROGRESS
-4 - Develop the data structure (.json or mysql?)
+4 - Develop the data structure (.json or mysql? A NOSQL DB like Mongo is also being considered)
 5 - Develop the script
 	5.1 - InitializeWorld
 	5.2 - CreateSaveLoad

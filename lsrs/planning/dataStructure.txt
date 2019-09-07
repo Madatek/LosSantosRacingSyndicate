@@ -1,0 +1,142 @@
+This document explains the structure of the data. Most likely they will be structured in .json documents, but it also may be structured in a mysql database. I have yet to decide.
+CLAN and RACING TEAM work the same, CLANS are for illegal racing, RACING TEAMS are for motorsport. Both participate in the trackdays/sanctioned street races.
+
+teams v
+pilot v
+car v
+event v
+savedata v
+contracts v
+auction house v
+
+SAVEDATA
+PilotID (INT)
+CurrentDate (Season/Week/Day)
+SaveName (String)
+
+CLAN / RACING TEAM
+
+ID (Int)
+Name (String)
+Prestige (Int)
+Current budget (Int)
+
+FOUNDED BY
+	Pilot Name (String) (ID?)
+	Date Founded (Season/Week/Day)
+STATUS/DISSOLVED
+	Is Dissolved? (BOOL)
+	Date Dissolved (Season/Week/Day)
+TOURNAMENTS ENTERED
+	TournamentID (Int) (references the Tournament/Event's ID)
+	Times entered (Int)
+	Times won (Int)
+BEST PILOTS (Top 5?)
+	Name (ID?)
+	Races Entered with team (Int)
+	Races Won with team (Int)
+	Prestige Raised for team (Int)
+
+
+
+PILOT
+
+ID (Int)
+Name (String)
+Nationality (String)
+Active Since (Season/Week/Day/Day)
+Active in (Only STR/Mostly STR/Balanced/Mostly PRO/Only PRO) -- AI Only, it's created in order to make them "choose" the events
+Prestige (Int)
+Money (Int)
+PRO Level (Float)
+PRO Races entered (Int)
+PRO Races won (Int)
+STR Level (Float)
+STR Races entered (Int)
+STR Races won (Int)
+PRO COMPETITION HISTORY
+	TournamentID (Int)
+	Times entered (Int)
+	Times won (Int)
+	TeamID (Int)
+	Team Name (Int)
+STREET COMPETITION HISTORY
+	TournamentID (Int)
+	Times entered (Int)
+	Times won (Int)
+	TeamID (Int)
+RACE TEAM / CLAN HISTORY
+	TeamID (Int)
+	Member from (Season/Week/Day/Day)
+	Member to (Season/Week/Day)
+	Races entered (Int)
+	Races won (Int)
+	Prestige raised for team (Int)
+CAR PARK
+	CarID (String)
+	Races entered (Int)
+	Races won (Int)
+
+
+CAR
+ID (String - PRO/STR for the discipline, three characters for ID, example STR0A5. This also functions as license plate where applicable)
+Registered (Season/Week/day)
+Manufacturer (String)
+Model (String)
+Races Entered (Int)
+Races Won (Int)
+Prestige (Int)
+Min value (Int)
+Current value (Int)
+OWNERS
+	PilotID (Int)
+	Name (String)
+	From (Season/Week/Day)
+	To (Season/Week/Day)
+	Races Entered (Int)
+	Races Won (Int)
+	Prestige Raised for (Int)
+TOURNAMENTS ENTERED
+	TournamentID (Int) (references the Tournament/Event's ID)
+	Times entered (Int)
+	Times won (Int)
+DISMANTLED?
+	Dismantled? (Bool)
+	Date of roctamation (Season/Week/Day)
+
+
+
+
+EVENT
+	ID (Int)
+	Name (String)
+	Discipline (Street/Semi/Pro)
+	Speed Class (D/C/B/A/S/X)
+	Max Participants (Int)
+	Founder (String)
+	Season Issued (Season)
+	Number of editions (Int)
+	Last edition (Int)
+	Prestige requirement (Int)
+	Prestige awarded for winning race (Int)
+	Prestige awarded for winning tournament (Int)
+	Entrance fee (Int)
+	Money awarded for winning race (Int)
+	Money awarded for winning tournament (Int)
+	HISTORY:
+		Edition (Int)
+		Season (Season)
+		Winner pilot
+		Winner car
+	CALENDAR
+		Order (Int)
+		Race (Race's XML, string?)
+		Date (Week/Day)
+
+CONTRACT
+	ID (Int)
+	TeamID (Int)
+	PilotID (Int)
+	For event (EventID)
+	Fee cut from race prize (Int, percentage 0 to 100)
+	Money bonus at event won (Int)
